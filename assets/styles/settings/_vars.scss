@@ -1,0 +1,113 @@
+// basic colors
+$color-black: #000;
+$color-white: #fff;
+
+// blue
+$color-blue-shark: #1e2327;
+$color-blue-dodger: #16a2ff;
+$color-blue-regal: #004878;
+
+// gray
+$color-gray-athens: #e1e4e9;
+$color-gray-mischka: #ced3dc;
+
+// regal shades
+$color-blue-regal-shade--20: #002036;
+$color-blue-regal-shade--10: #003c64;
+
+// dodger shades
+$color-blue-dodger-shade--20: #005a96;
+$color-blue-dodger-shade--10: #0087e1;
+
+// shark shades
+$color-blue-shark-shade--20: #060707;
+$color-blue-shark-shade--10: #191e21;
+
+// mischka shades
+$color-blue-mischka-shade--20: #a2abbd;
+$color-blue-mischka-shade--10: #b8c0cd;
+
+// regal tints
+$color-blue-regal-tint--90: #0063a5;
+$color-blue-regal-tint--80: #007dd1;
+$color-blue-regal-tint--70: #0097fc;
+$color-blue-regal-tint--60: #28a9ff;
+$color-blue-regal-tint--50: #53baff;
+$color-blue-regal-tint--40: #7ecbff;
+$color-blue-regal-tint--30: #a9ddff;
+$color-blue-regal-tint--20: #b9e3ff;
+$color-blue-regal-tint--10: #dcf1ff;
+
+// shark tints
+$color-blue-shark-tint--90: #343d44;
+$color-blue-shark-tint--80: #49565f;
+$color-blue-shark-tint--70: #5f6e7b;
+$color-blue-shark-tint--60: #758795;
+$color-blue-shark-tint--50: #919faa;
+$color-blue-shark-tint--40: #acb7bf;
+$color-blue-shark-tint--30: #c8cfd5;
+$color-blue-shark-tint--20: #d2d8dc;
+$color-blue-shark-tint--10: #e8ebee;
+
+// dodger tints
+$color-blue-dodger-tint--90: #2eacff;
+$color-blue-dodger-tint--80: #49b6ff;
+$color-blue-dodger-tint--70: #63c0ff;
+$color-blue-dodger-tint--60: #7dcbff;
+$color-blue-dodger-tint--50: #97d5ff;
+$color-blue-dodger-tint--40: #b1e0ff;
+$color-blue-dodger-tint--30: #bfe5ff;
+$color-blue-dodger-tint--20: #d4eeff;
+$color-blue-dodger-tint--10: #eaf6ff;
+
+// mischka tints
+$color-gray-mischka-tint--90: #d4d8e0;
+$color-gray-mischka-tint--80: #d8dce3;
+$color-gray-mischka-tint--70: #dce0e6;
+$color-gray-mischka-tint--60: #e1e4e9;
+$color-gray-mischka-tint--50: #e7e9ed;
+$color-gray-mischka-tint--40: #eeeff3;
+$color-gray-mischka-tint--30: #f2f3f6;
+$color-gray-mischka-tint--20: #f6f7f9;
+$color-gray-mischka-tint--10: #fbfbfc;
+
+// Linear-gradients
+$linear-gradient-circle: linear-gradient(182.68deg, $color-blue-dodger 0%, $color-blue-regal 100%);
+
+// shadows
+$shadow-card-small: 0 8px 24px 0 rgb(30 35 39 / 0.2);
+$shadow-button-small: 0 12px 16px -2px rgb(0 72 120 / 0.3);
+$shadow-button-icon: 0 6px 13px 0 $color-blue-shark;
+$shadow-button-icon-large: 0 8px 17px 0 $color-blue-shark;
+
+// border properties
+$border-radius-small: 0.5rem;
+$border-radius-default: 1rem;
+
+// layout - grid
+$grid-max-width: 1344px;
+$grid-max-width-full-hd: 1524px;
+$grid-min-width: 352px;
+
+// layout - gutter
+$gutter-full-hd: 1.2rem;
+$gutter-default: 1.2rem;
+$gutter-mobile: 0.8rem;
+
+// screen width
+$default-screen-width: 1440px;
+
+// transitions
+$transition--cubic: cubic-bezier(0.785, 0.135, 0.15, 0.86);
+$transition: 0.5s $transition--cubic;
+$transition--slow: 0.9s $transition--cubic;
+$transition--fast: 0.4s $transition--cubic;
+$transition--extra-fast: 0.2s $transition--cubic;
+
+// ------- Media queries -------//
+$viewport-extra-small: 350px; // 350px
+$viewport-small: 576px; // 576px
+$viewport-medium: 992px; // 992px
+$viewport-large: 1025px; // 1025px
+$viewport-extra-large: 1440px; // 1200px
+$viewport-max: 1920px; // 1920px

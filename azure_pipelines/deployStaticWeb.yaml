@@ -1,0 +1,56 @@
+parameters:
+  - name: environment
+    type: string
+  - name: domain
+    type: string
+  - name: azureResourceManagerConnection
+    type: string
+  - name: azureSubscriptionId
+    type: string
+  - name: armTemplateFile
+    type: string
+  - name: armParameterFile
+    type: string
+  - name: appName
+    type: string
+  - name: deploymentToken
+    type: string
+  - name: resourceGroupName
+    type: string
+  - name: vaultName
+    type: string
+  - name: isCms
+    type: boolean
+
+steps:
+  - ${{ if ne(parameters.isCms, true) }}:
+      - task: AzureResourceManagerTemplateDeployment@3
+        inputs:
+          deploymentScope: "Subscription"
+          deploymentMode: "Incremental"
+          azureResourceManagerConnection: ${{parameters.azureResourceManagerConnection}}
+          subscriptionId: ${{parameters.azureSubscriptionId}}
+          location: "North Europe"
+          templateLocation: "Linked artifact"
+          csmFile: ${{parameters.armTemplateFile}}
+          csmParametersFile: ${{parameters.armParameterFile}}
+          overrideParameters: '-environment "${{parameters.environment}}"
+            -resourceGroupName "${{parameters.resourceGroupName}}"
+            -vaultName "${{parameters.vaultName}}"
+            -appName "stapp-${{parameters.appName}}"
+            -domainNames ${{parameters.domain}}'
+
+  - task: ExtractFiles@1
+    displayName: "Extract files"
+    inputs:
+      cleanDestinationFolder: true
+      archiveFilePatterns: $(Pipeline.Workspace)/drop/$(outDir).zip
+      destinationFolder: "$(Pipeline.Workspace)/drop/dist"
+
+  - task: AzureStaticWebApp@0
+    displayName: "Static Web App"
+    inputs:
+      workingDirectory: "$(Pipeline.Workspace)/drop"
+      app_location: dist/public
+      skip_app_build: true
+      azure_static_web_apps_api_token: "${{parameters.deploymentToken}}"

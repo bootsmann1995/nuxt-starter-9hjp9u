@@ -1,0 +1,60 @@
+/* stylelint-disable unit-no-unknown */
+@import "../../../../assets/styles/tools/mixins";
+@import "../../../../assets/styles/settings/vars";
+@import "../../../../assets/styles/settings/fonts";
+@import "../../../../assets/styles/settings/spacing";
+
+// accordion
+
+.accordion-item {
+	display: none;
+	width: 100%;
+	max-height: 6.7rem;
+	margin-right: spacing(component, 3xs);
+	margin-left: spacing(component, 3xs);
+	overflow: hidden;
+	border-bottom: solid 1px $color-gray-mischka;
+	color: $color-blue-shark;
+	transition: max-height $transition--fast;
+
+	h3 {
+		letter-spacing: 0.06rem;
+	}
+
+	&__icon {
+		display: block;
+		width: 1.6rem;
+		height: 1.6rem;
+		fill: $color-blue-shark;
+		transform: rotateX(0);
+		transition: $transition;
+	}
+
+	&__heading {
+		// important used to overwrite bootstrap padding
+		padding-right: 0 !important;
+		padding-left: 0 !important;
+	}
+
+	&.is-active .accordion-item__icon {
+		transform: rotateX(180deg);
+		transition: $transition;
+	}
+
+	a:last-child {
+		// Used to overwrite spacing class
+		margin-bottom: 0 !important;
+	}
+}
+
+button {
+	border: none;
+	background: none;
+	cursor: pointer;
+}
+
+@include viewport-medium {
+	.accordion-item {
+		display: block;
+	}
+}

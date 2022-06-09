@@ -1,0 +1,24 @@
+@import "../../../assets/styles/tools/mixins";
+@import "../../../assets/styles/settings/vars";
+@import "../../../assets/styles/settings/fonts";
+@import "../../../assets/styles/settings/spacing";
+
+.video-player {
+	position: relative;
+	height: 100%;
+	aspect-ratio: 16/9;
+
+	&__placeholder {
+		width: 100%;
+		height: 100%;
+	}
+
+	&__play-icon {
+		@include position-center;
+	}
+
+	iframe {
+		width: 100%;
+		height: 100%;
+	}
+}

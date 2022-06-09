@@ -1,0 +1,32 @@
+/* stylelint-disable unit-no-unknown */
+@import "../../../assets/styles/tools/mixins";
+@import "../../../assets/styles/settings/vars";
+@import "../../../assets/styles/settings/fonts";
+@import "../../../assets/styles/settings/spacing";
+
+.opening-schedule {
+	background-color: $color-blue-shark-tint--90;
+
+	* {
+		color: $color-white;
+	}
+
+	&__wrapper {
+		gap: spacing(component, 3xl);
+	}
+
+	&__date-wrapper {
+		span:nth-child(1) {
+			width: 5.5rem;
+		}
+
+		span:nth-child(2) {
+			width: 7.3rem;
+		}
+
+		span:nth-child(3),
+		span:nth-child(4), {
+			width: 8.5rem;
+		}
+	}
+}

@@ -1,0 +1,137 @@
+// tab group
+@import "/assets/styles/tools/mixins";
+@import "/assets/styles/settings/fonts";
+@import "/assets/styles/settings/vars";
+@import "/assets/styles/settings/spacing";
+
+.tabs {
+	&__list {
+		@include unset-all;
+
+		display: flex;
+	}
+
+	&__button {
+		@include unset-all;
+
+		padding: 0 4rem 1.2rem;
+	}
+
+	&__list--with-buttons {
+		padding-right: 1rem;
+	}
+
+	&__list-item--with-buttons button {
+		width: 100%;
+		height: 3.6rem;
+		padding: 0;
+		font-size: 1.4rem;
+		line-height: 1.4rem;
+	}
+
+	&__list-item {
+		@include unset-all;
+		@include text-small;
+		@include font-aktiv-grotesk-bold;
+
+		position: relative;
+		color: $color-blue-shark-tint--40;
+		cursor: pointer;
+		transition: color $transition;
+
+		&::before {
+			content: "";
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			height: 2px;
+			background-color: $color-blue-shark-tint--40;
+		}
+
+		&::after {
+			content: "";
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 0;
+			height: 2px;
+			background-color: currentcolor;
+			transition: width $transition;
+		}
+
+		&.is-active {
+			color: $color-blue-regal;
+		}
+
+		&.is-active::after {
+			width: 100%;
+		}
+	}
+
+	&__list-item--with-buttons {
+		width: 50%;
+
+		&::after,
+		&::before {
+			display: none;
+		}
+
+		&:nth-of-type(1) button {
+			border-radius: 0.4rem 0 0 0.4rem;
+		}
+
+		&:nth-of-type(2) button {
+			border-left: none;
+			border-radius: 0 0.4rem 0.4rem 0;
+		}
+
+		.btn-secondary {
+			border-color: $color-gray-mischka;
+			color: $color-blue-regal;
+		}
+	}
+
+	&__panels section {
+		opacity: 1;
+		transition: opacity $transition;
+	}
+
+	&__panels section:not(.is-active) {
+		@include visually-hidden;
+	}
+}
+
+@include viewport-small {
+	.tabs {
+		&__list-item {
+			display: flex;
+			width: 100%;
+		}
+
+		&__button {
+			width: 100%;
+			text-align: center;
+		}
+
+		&__list--with-buttons {
+			padding-right: 0;
+			justify-content: center;
+		}
+
+		&__list-item--with-buttons {
+			width: unset;
+		}
+
+		&__list-item--with-buttons button {
+			display: flex;
+			width: 100%;
+			width: 14.8rem;
+			height: 4rem;
+			padding-top: 0;
+			padding-bottom: 0;
+			align-items: center;
+			justify-content: center;
+		}
+	}
+}

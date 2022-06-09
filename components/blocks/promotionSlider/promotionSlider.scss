@@ -1,0 +1,45 @@
+/* stylelint-disable unit-no-unknown */
+@import "../../../assets/styles/tools/mixins";
+@import "../../../assets/styles/settings/vars";
+@import "../../../assets/styles/settings/fonts";
+@import "../../../assets/styles/settings/spacing";
+
+.promotion-slider {
+	margin-right: -24px;
+	margin-left: -24px;
+	padding-right: 24px;
+	padding-left: 24px;
+
+	.headline-2 {
+		margin-bottom: 0;
+	}
+
+	.swiper-scrollbar-drag {
+		background: $color-blue-regal;
+	}
+
+	.swiper-slide {
+		max-width: 100%;
+	}
+
+	.swiper-wrapper {
+		padding-bottom: 4.2rem;
+	}
+
+	.btn-tertiary {
+		align-items: end;
+	}
+}
+
+@include viewport-medium {
+	.promotion-slider {
+		.swiper-wrapper {
+			// custom spacing
+			padding-bottom: 0.8rem;
+		}
+
+		.swiper-scrollbar {
+			height: 0.2rem;
+		}
+	}
+}

@@ -1,0 +1,38 @@
+@import "../../../assets/styles/settings/vars";
+@import "../../../assets/styles/tools/mixins";
+
+.usp-item {
+	display: flex;
+	align-items: flex-start;
+
+	&__icon-wrap {
+		width: 2.8rem;
+		height: 2.8rem;
+	}
+
+	&__icon {
+		position: absolute;
+		width: 2.8rem;
+		height: 2.8rem;
+		fill: $color-blue-regal;
+	}
+}
+
+.usp-image,
+.usp-video {
+	aspect-ratio: 16/9;
+}
+
+.usp-video {
+	width: 100%;
+	overflow: hidden;
+	border-radius: 1rem;
+}
+
+@include viewport-small {
+	.usp-item {
+		&__text {
+			max-width: 27rem;
+		}
+	}
+}

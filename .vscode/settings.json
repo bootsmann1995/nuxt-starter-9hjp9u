@@ -1,0 +1,15 @@
+{
+	//Formatters
+	"css.validate": false,
+	"less.validate": false,
+	"scss.validate": false,
+	"prettier.configPath": ".prettierrc",
+	"stylelint.configFile": ".stylelintrc",
+	"stylelint.validate": ["css", "scss"],
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	"editor.codeActionsOnSave": {
+		"source.organizeImports": true,
+		"source.fixAll.eslint": true,
+		"source.fixAll.stylelint": true
+	}
+}

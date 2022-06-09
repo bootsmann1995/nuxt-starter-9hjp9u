@@ -1,0 +1,24 @@
+parameters:
+  - name: isCms
+    type: boolean
+    default: false
+
+stages:
+  - stage: BuildBicep
+    jobs:
+      - job: BuildBicep
+        steps:
+          - task: PowerShell@2
+            condition: "ne(${{parameters.isCms}}, true)"
+            displayName: "Build bicep files"
+            inputs:
+              targetType: "inline"
+              script: "az bicep build --file './azure_pipelines/resources/app.bicep'"
+
+          - task: PublishBuildArtifacts@1
+            displayName: "Publish resource templates"
+            inputs:
+              PathtoPublish: "$(Build.SourcesDirectory)/azure_pipelines/resources"
+              ArtifactName: "resources"
+              fileCopyOptions: "**/*.*"
+              publishLocation: "Container"

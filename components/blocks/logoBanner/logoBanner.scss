@@ -1,0 +1,44 @@
+@import "../../../assets/styles/settings/vars";
+@import "../../../assets/styles/tools/mixins";
+
+.link-list-wrapper {
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	grid-template-rows: auto;
+	grid-gap: calc($gutter-default * 2);
+	grid-auto-rows: auto;
+	width: 100%;
+}
+
+.link-list-item {
+	border: 1px solid $color-gray-mischka;
+	border-radius: 0.5rem;
+	background-color: $color-gray-mischka-tint--10;
+	/* stylelint-disable-next-line max-line-length */
+	transition: box-shadow $transition, background-color $transition, opacity $transition--slow, transform $transition--slow;
+	aspect-ratio: 16/9;
+
+	&__img {
+		max-height: 5.6rem;
+		object-fit: contain;
+	}
+
+	&:hover {
+		background-color: $color-white;
+		box-shadow: 0 8px 24px 0 rgb(30 35 39 / 0.2);
+	}
+}
+
+@include viewport-medium {
+	.link-list-wrapper {
+		grid-template-columns: repeat(2, 1fr);
+		grid-gap: calc($gutter-mobile * 2);
+		background-color: $color-white;
+	}
+
+	.link-list-item {
+		&:hover {
+			box-shadow: none;
+		}
+	}
+}

@@ -1,0 +1,386 @@
+/* stylelint-disable-next-line // rules can be overridden here */
+@use "sass:map";
+@import "../tools/helping-functions";
+
+$s-spacing: (
+	component: (
+		reset: (
+			default: 0,
+			mobile: 0,
+		),
+		auto: (
+			default: auto,
+			mobile: auto,
+		),
+		3xs: (
+			default: 0.4rem,
+			mobile: 0.4rem,
+		),
+		xxs: (
+			default: 0.8rem,
+			mobile: 0.8rem,
+		),
+		xs: (
+			default: 1.2rem,
+			mobile: 1.2rem,
+		),
+		s: (
+			default: 1.6rem,
+			mobile: 1.6rem,
+		),
+		m: (
+			default: 1.2rem,
+			mobile: 1.2rem,
+		),
+		l: (
+			default: 2rem,
+			mobile: 2rem,
+		),
+		2l: (
+			default: 2.4rem,
+			mobile: 2.4rem,
+		),
+		3l: (
+			default: 2.8rem,
+			mobile: 2.8rem,
+		),
+		4l: (
+			default: 3.2rem,
+			mobile: 3.2rem,
+		),
+		xl: (
+			default: 4rem,
+			mobile: 3.2rem,
+		),
+		2xl: (
+			default: 4.8rem,
+			mobile: 4.8rem,
+		),
+		3xl: (
+			default: 6rem,
+			mobile: 6rem,
+		),
+	),
+	layout: (
+		reset: (
+			default: 0,
+			mobile: 0,
+		),
+		auto: (
+			default: auto,
+			mobile: auto,
+		),
+		xs: (
+			default: 2rem,
+			mobile: 2rem,
+		),
+		s: (
+			default: 2.8rem,
+			mobile: 2rem,
+		),
+		m: (
+			default: 3.2rem,
+			mobile: 2.4rem,
+		),
+		ml: (
+			default: 4rem,
+			mobile: 3.2rem,
+		),
+		l: (
+			default: 4.8rem,
+			mobile: 3.2rem,
+		),
+		2l: (
+			default: 6rem,
+			mobile: 4.8rem,
+		),
+		3l: (
+			default: 7.2rem,
+			mobile: 4.8rem,
+		),
+		xl: (
+			default: 10rem,
+			mobile: 4.8rem,
+		),
+		2xl: (
+			default: 12rem,
+			mobile: 4.8rem,
+		),
+		menu: (
+			default: 10rem,
+			mobile: 10rem,
+		),
+	),
+);
+
+// Returns the default value defined in the spacing object
+@function spacing($area-value, $size, $viewport: default) {
+	@if type-of($s-spacing) == map {
+		$area: map.get($s-spacing, $area-value);
+		$item: map.get($area, $size);
+		@if type-of($item) == map {
+			@return map.get($item, $viewport);
+		}
+	}
+	@return "";
+}
+
+// Syntax .l-mb-xl === layout + space + size (x: vertical og y:horizontal)
+$layout: map.get($s-spacing, layout);
+$component: map.get($s-spacing, component);
+
+@each $name, $values in $component {
+	$value: 0;
+	$mobile: 0;
+	$default: map.get($values, default);
+	$viewport: auto;
+
+	@if $default != "auto" {
+		$viewport: rem-to-vw($default);
+	}
+
+	@if $default == "auto" {
+		$value: auto;
+	} @else if $default > 0 {
+		$desktop: map.get($values, default);
+		$mobile: map.get($values, mobile);
+		$value: clamp($mobile, $viewport, $default);
+	}
+
+	.c-m-#{$name} {
+		margin: $value;
+	}
+	.c-mx-#{$name} {
+		margin-right: $value;
+		margin-left: $value;
+	}
+	.c-my-#{$name} {
+		margin-top: $value;
+		margin-bottom: $value;
+	}
+	.c-ml-#{$name} {
+		margin-left: $value;
+	}
+	.c-mr-#{$name} {
+		margin-right: $value;
+	}
+	.c-mb-#{$name} {
+		margin-bottom: $value;
+	}
+	.c-mt-#{$name} {
+		margin-top: $value;
+	}
+
+	// Padding
+	.c-p-#{$name} {
+		padding: $value;
+	}
+	.c-px-#{$name} {
+		padding-right: $value;
+		padding-left: $value;
+	}
+	.c-py-#{$name} {
+		padding-top: $value;
+		padding-bottom: $value;
+	}
+	.c-pl-#{$name} {
+		padding-left: $value;
+	}
+	.c-pr-#{$name} {
+		padding-right: $value;
+	}
+	.c-pb-#{$name} {
+		padding-bottom: $value;
+	}
+	.c-pt-#{$name} {
+		padding-top: $value;
+	}
+
+	@include viewport-large {
+		// mobile overwrite
+		.c-m-#{$name}-m {
+			margin: $mobile !important;
+		}
+		.c-mx-#{$name}-m {
+			margin-right: $mobile !important;
+			margin-left: $mobile !important;
+		}
+		.c-my-#{$name}-m {
+			margin-top: $mobile !important;
+			margin-bottom: $mobile !important;
+		}
+		.c-ml-#{$name}-m {
+			margin-left: $mobile !important;
+		}
+		.c-mr-#{$name}-m {
+			margin-right: $mobile !important;
+		}
+		.c-mb-#{$name}-m {
+			margin-bottom: $mobile !important;
+		}
+		.c-mt-#{$name}-m {
+			margin-top: $mobile !important;
+		}
+
+		// Padding
+		.c-p-#{$name}-m {
+			padding: $mobile !important;
+		}
+		.c-px-#{$name}-m {
+			padding-right: $mobile !important;
+			padding-left: $mobile !important;
+		}
+		.c-py-#{$name}-m {
+			padding-top: $mobile !important;
+			padding-bottom: $mobile !important;
+		}
+		.c-pl-#{$name}-m {
+			padding-left: $mobile !important;
+		}
+		.c-pr-#{$name}-m {
+			padding-right: $mobile !important;
+		}
+		.c-pb-#{$name}-m {
+			padding-bottom: $mobile !important;
+		}
+		.c-pt-#{$name}-m {
+			padding-top: $mobile !important;
+		}
+	}
+}
+
+@each $name, $values in $layout {
+	$value: 0;
+	$mobile: 0;
+	$default: map.get($values, default);
+	$viewport: auto;
+
+	@if $default != "auto" {
+		$viewport: rem-to-vw($default);
+	}
+
+	@if $default == "auto" {
+		$value: auto;
+	} @else if $default > 0 {
+		$desktop: map.get($values, default);
+		$mobile: map.get($values, mobile);
+		$value: clamp($mobile, $viewport, $default);
+	}
+
+	.l-m-#{$name} {
+		margin: $value;
+	}
+	.l-mx-#{$name} {
+		margin-right: $value;
+		margin-left: $value;
+	}
+	.l-my-#{$name} {
+		margin-top: $value;
+		margin-bottom: $value;
+	}
+	.l-ml-#{$name} {
+		margin-left: $value;
+	}
+	.l-mr-#{$name} {
+		margin-right: $value;
+	}
+	.l-mb-#{$name} {
+		margin-bottom: $value;
+	}
+	.l-mt-#{$name} {
+		margin-top: $value;
+	}
+
+	// Padding
+	.l-p-#{$name} {
+		padding: $value;
+	}
+	.l-px-#{$name} {
+		padding-right: $value;
+		padding-left: $value;
+	}
+	.l-py-#{$name} {
+		padding-top: $value;
+		padding-bottom: $value;
+	}
+	.l-pl-#{$name} {
+		padding-left: $value;
+	}
+	.l-pr-#{$name} {
+		padding-right: $value;
+	}
+	.l-pb-#{$name} {
+		padding-bottom: $value;
+	}
+	.l-pt-#{$name} {
+		padding-top: $value;
+	}
+
+	@include viewport-large {
+		// mobile overwrite
+		.l-m-#{$name}-m {
+			margin: $mobile !important;
+		}
+		.l-mx-#{$name}-m {
+			margin-right: $mobile !important;
+			margin-left: $mobile !important;
+		}
+		.l-my-#{$name}-m {
+			margin-top: $mobile !important;
+			margin-bottom: $mobile !important;
+		}
+		.l-ml-#{$name}-m {
+			margin-left: $mobile !important;
+		}
+		.l-mr-#{$name}-m {
+			margin-right: $mobile !important;
+		}
+		.l-mb-#{$name}-m {
+			margin-bottom: $mobile !important;
+		}
+		.l-mt-#{$name}-m {
+			margin-top: $mobile !important;
+		}
+
+		// Padding
+		.l-p-#{$name}-m {
+			padding: $mobile !important;
+		}
+		.l-px-#{$name}-m {
+			padding-right: $mobile !important;
+			padding-left: $mobile !important;
+		}
+		.l-py-#{$name}-m {
+			padding-top: $mobile !important;
+			padding-bottom: $mobile !important;
+		}
+		.l-pl-#{$name}-m {
+			padding-left: $mobile !important;
+		}
+		.l-pr-#{$name}-m {
+			padding-right: $mobile !important;
+		}
+		.l-pb-#{$name}-m {
+			padding-bottom: $mobile !important;
+		}
+		.l-pt-#{$name}-m {
+			padding-top: $mobile !important;
+		}
+	}
+}
+
+@each $name, $values in $component {
+	$default: map.get($values, default);
+
+	.flex-gap-#{$name} {
+		gap: $default;
+	}
+
+	.flex-r-gap-#{$name} {
+		gap: 0 $default;
+	}
+
+	.flex-c-gap-#{$name} {
+		gap: $default 0;
+	}
+}

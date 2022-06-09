@@ -1,0 +1,40 @@
+@import "../../../../assets/styles/tools/mixins";
+@import "../../../../assets/styles/settings/vars";
+@import "../../../../assets/styles/settings/fonts";
+@import "../../../../assets/styles/settings/spacing";
+
+.promotion-item {
+	margin-top: -12px;
+	margin-right: -12px;
+	margin-left: -12px;
+	/* stylelint-disable-next-line unit-no-unknown */
+	padding: 12px 12px spacing(component, 2l) 12px;
+	box-shadow: none;
+	transition: $transition;
+
+	&__icon {
+		position: absolute;
+		right: 1.2rem;
+		bottom: 1.2rem;
+		width: 1.4rem;
+		height: 1.4rem;
+		opacity: 0;
+		fill: $color-blue-regal;
+		transform: translateX(-1rem);
+		transition: opacity $transition, transform $transition;
+		will-change: opacity, transform;
+	}
+}
+
+@include viewport-mouse {
+	.promotion-item:hover {
+		box-shadow: 0 0.5rem 1.5rem 0.4rem rgb(30 35 39 / 0.2);
+		transition: $transition;
+
+		.promotion-item__icon {
+			opacity: 1;
+			transform: translateX(0);
+			transition: opacity $transition, transform $transition;
+		}
+	}
+}

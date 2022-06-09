@@ -1,0 +1,94 @@
+@import "../../../../assets/styles/tools/mixins";
+@import "../../../../assets/styles/settings/vars";
+
+.header-wrapper {
+	display: block;
+	position: fixed;
+	left: 50%;
+	z-index: 10;
+	width: 100%;
+	height: 8.8rem;
+	background-color: $color-white;
+	transform: translate3d(-50%, 0, 0);
+	transition: top 0.4s ease-in-out;
+
+	&::after {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 50%;
+		z-index: -1;
+		width: 100vw;
+		height: 100%;
+		background-color: $color-white;
+		transform: translate3d(-50%, 0, 0);
+	}
+}
+
+.header {
+	height: 8.8rem;
+
+	&__logo {
+		width: 12.8rem;
+		height: 2.8rem;
+	}
+
+	&__function-link-icon {
+		display: inline-block;
+		width: 17px;
+		height: 17px;
+		fill: $color-blue-shark;
+	}
+}
+
+.sub-menu-bg {
+	&::before {
+		content: "";
+		position: fixed;
+		top: 8.8rem;
+		left: 50%;
+		z-index: -1;
+		width: 100vw;
+		height: 0;
+		background-color: $color-white;
+		pointer-events: none;
+		transform: translateX(-50%);
+		transition: height $transition--fast;
+		transition-delay: 0.3s;
+	}
+
+	&::after {
+		content: "";
+		position: fixed;
+		top: 8.8rem;
+		left: 50%;
+		z-index: -2;
+		width: 100vw;
+		height: 100vh;
+		background-color: rgba($color-blue-shark, 0);
+		pointer-events: none;
+		transform: translateX(-50%);
+		transition: background-color $transition--fast;
+		transition-delay: 0s;
+	}
+}
+
+.sub-menu-bg.is-active {
+	&::before {
+		height: 54.4rem;
+		pointer-events: all;
+		transition-delay: 0s;
+	}
+
+	&::after {
+		background-color: rgba($color-blue-shark, 0.9);
+		pointer-events: all;
+		transition-delay: 0.2s;
+	}
+}
+
+@include viewport-medium {
+	.header-wrapper {
+		display: none;
+	}
+}

@@ -1,0 +1,76 @@
+/* stylelint-disable unit-no-unknown */
+@import "../../../assets/styles/tools/mixins";
+@import "../../../assets/styles/settings/vars";
+@import "../../../assets/styles/settings/fonts";
+@import "../../../assets/styles/settings/spacing";
+
+.equipment {
+	&__header {
+		&::after {
+			content: "";
+			display: flex;
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			height: 1px;
+			background-color: $color-gray-mischka-tint--60;
+		}
+	}
+
+	&__collection {
+		margin-top: spacing(component, xl);
+		padding-bottom: spacing(component, 4l);
+
+		&::after {
+			content: "";
+			display: flex;
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			height: 1px;
+			background-color: $color-gray-mischka-tint--60;
+		}
+
+		p:nth-last-of-type(1),
+		p:nth-last-of-type(2),
+		p:nth-last-of-type(3) {
+			margin-bottom: 0;
+		}
+	}
+
+	&__item {
+		max-height: 9.6rem;
+		overflow: hidden;
+		transition: max-height $transition--fast;
+	}
+
+	&__item.is-expanded {
+		max-height: 100%;
+	}
+
+	button {
+		@include button-text;
+
+		color: $color-blue-regal;
+	}
+}
+
+@include viewport-medium {
+	.equipment {
+		&__item {
+			max-height: 7rem;
+		}
+
+		&__collection {
+			margin-top: spacing(component, 3l);
+			padding-bottom: spacing(component, 3l);
+
+			p:nth-last-of-type(1) {
+				// used to overwrite spacing class
+				margin-bottom: spacing(component, reset) !important;
+			}
+		}
+	}
+}

@@ -1,0 +1,67 @@
+trigger:
+  - develop
+  - master
+
+pr: none
+
+parameters:
+  - name: isCms
+    type: boolean
+    default: false
+
+variables:
+  azureResourceManagerConnection: "Azure CSP"
+  azureSubscriptionId: "ba48b53c-e4c7-49c8-91e5-c03f5df70980"
+  armTemplateFile: "$(Pipeline.Workspace)/resources/app.json"
+  armParameterFile: "$(Pipeline.Workspace)/resources/app.parameters.json"
+
+pool:
+  vmImage: ubuntu-latest
+
+stages:
+  - template: ./azure_pipelines/biceps.yaml
+    parameters:
+      isCms: ${{parameters.isCms}}
+
+  - template: ./azure_pipelines/buildAndDeployNuxt.yaml
+    parameters:
+      isCms: ${{parameters.isCms}}
+      environment: dev
+      domain: '["av-ecom.laitdev.dk"]'
+      serverRender: true
+      azureResourceManagerConnection: $(azureResourceManagerConnection)
+      azureSubscriptionId: $(azureSubscriptionId)
+      armTemplateFile: $(armTemplateFile)
+      armParameterFile: $(armParameterFile)
+      solutionName: av-ecommerce
+      siteName: avdk
+      deployBranch: refs/heads/develop
+
+  - ${{ if eq(variables['build.sourceBranch'], 'refs/heads/master')}}:
+      - template: ./azure_pipelines/buildAndDeployNuxt.yaml
+        parameters:
+          isCms: ${{parameters.isCms}}
+          environment: preview
+          domain: '[]'
+          serverRender: false
+          azureResourceManagerConnection: $(azureResourceManagerConnection)
+          azureSubscriptionId: $(azureSubscriptionId)
+          armTemplateFile: $(armTemplateFile)
+          armParameterFile: $(armParameterFile)
+          solutionName: av-ecommerce
+          siteName: avdk
+          deployBranch: refs/heads/master
+
+      - template: ./azure_pipelines/buildAndDeployNuxt.yaml
+        parameters:
+          isCms: ${{parameters.isCms}}
+          environment: prod
+          domain: '[]'
+          serverRender: true
+          azureResourceManagerConnection: $(azureResourceManagerConnection)
+          azureSubscriptionId: $(azureSubscriptionId)
+          armTemplateFile: $(armTemplateFile)
+          armParameterFile: $(armParameterFile)
+          solutionName: av-ecommerce
+          siteName: avdk
+          deployBranch: refs/heads/master

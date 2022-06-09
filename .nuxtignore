@@ -1,0 +1,2 @@
+# ignore page typescript files
+pages/**/*.ts

@@ -1,0 +1,11 @@
+@import "../../../assets/styles/tools/mixins";
+@import "../../../assets/styles/settings/vars";
+@import "../../../assets/styles/settings/spacing";
+
+@include viewport-medium {
+	.contact-section {
+		&__contact-wrapper {
+			flex-direction: column;
+		}
+	}
+}

@@ -1,0 +1,17 @@
+@import "../../../assets/styles/settings/vars";
+@import "../../../assets/styles/tools/mixins";
+
+.two-column-block {
+	&__media img {
+		border-radius: $border-radius-default;
+	}
+}
+
+@include viewport-medium {
+	.two-column-block {
+		&__media {
+			margin-bottom: 1.2rem;
+			padding: 0 !important;
+		}
+	}
+}

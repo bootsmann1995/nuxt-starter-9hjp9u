@@ -1,0 +1,64 @@
+/* stylelint-disable unit-no-unknown */
+@import "../../../assets/styles/tools/mixins";
+@import "../../../assets/styles/settings/vars";
+@import "../../../assets/styles/settings/fonts";
+@import "../../../assets/styles/settings/spacing";
+
+.model-contact-btn {
+	position: relative;
+	height: 6.4rem;
+	color: $color-blue-shark;
+
+	&::before {
+		content: "";
+		display: flex;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		height: 1px;
+		background-color: $color-gray-mischka-tint--60;
+	}
+
+	&__icon {
+		width: 2rem;
+		height: 2rem;
+		fill: $color-blue-shark;
+	}
+
+	&__content {
+		padding-left: spacing(component, 2l);
+	}
+
+	&:nth-child(odd) .model-contact-btn__content {
+		&::after {
+			content: "";
+			display: flex;
+			position: absolute;
+			right: 0;
+			width: 1px;
+			height: 3.2rem;
+			background-color: $color-gray-mischka-tint--60;
+		}
+	}
+}
+
+.credentials {
+	&__icon {
+		width: 1.8rem;
+		height: 1.8rem;
+	}
+}
+
+@include viewport-medium {
+	.model-contact-btn {
+		&__content {
+			padding-left: spacing(component, xs) !important;
+		}
+
+		&:nth-child(odd) .model-contact-btn__content::after {
+			content: "";
+			display: none;
+		}
+	}
+}

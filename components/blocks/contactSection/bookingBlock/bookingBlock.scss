@@ -1,0 +1,21 @@
+@import "../../../../assets/styles/tools/mixins";
+@import "../../../../assets/styles/settings/vars";
+@import "../../../../assets/styles/settings/spacing";
+@import "../../../../assets/styles/settings/fonts";
+
+.booking-block {
+	min-width: 50%;
+	margin-left: spacing(component, xs);
+	border: solid 0.1rem $color-gray-mischka-tint--60;
+	background-color: $color-gray-mischka-tint--30;
+
+	&__button {
+		max-width: 21rem;
+	}
+}
+
+@include viewport-medium {
+	.booking-block {
+		margin-left: 0;
+	}
+}

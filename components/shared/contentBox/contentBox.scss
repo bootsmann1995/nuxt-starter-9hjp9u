@@ -1,0 +1,26 @@
+/* stylelint-disable unit-no-unknown */
+@import "../../../assets/styles/settings/vars";
+@import "../../../assets/styles/tools/mixins";
+@import "../../../assets/styles/tools/helping-functions";
+@import "../../../assets/styles/settings/spacing";
+
+.content-box {
+	&__buttons-wrapper {
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+	}
+}
+
+@include viewport-medium {
+	.content-box {
+		&__buttons-wrapper {
+			width: 100%;
+			flex-direction: column;
+
+			.btn-primary {
+				margin: 0;
+			}
+		}
+	}
+}

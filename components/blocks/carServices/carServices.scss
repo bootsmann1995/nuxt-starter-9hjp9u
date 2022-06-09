@@ -1,0 +1,30 @@
+/* stylelint-disable max-line-length */
+@import "../../../assets/styles/settings/vars";
+@import "../../../assets/styles/tools/mixins";
+
+.car-services {
+	max-width: 65rem;
+
+	&__link-wrapper {
+		display: flex;
+		gap: 0.8rem;
+		width: 100%;
+	}
+
+	&__link-item {
+		width: 8.4rem;
+		border: 0.1rem solid $color-gray-mischka;
+		border-radius: 0.5rem;
+		background-color: $color-gray-mischka-tint--10;
+		transition: box-shadow $transition, background-color $transition, opacity $transition--slow, transform $transition--slow;
+		aspect-ratio: 16/9;
+
+		a {
+			display: block;
+		}
+
+		&:hover {
+			box-shadow: 0 8px 24px 0 rgb(30 35 39 / 0.2);
+		}
+	}
+}

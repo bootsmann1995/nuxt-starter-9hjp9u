@@ -1,0 +1,137 @@
+@import "../../../assets/styles/tools/mixins";
+@import "../../../assets/styles/settings/vars";
+@import "../../../assets/styles/settings/fonts";
+@import "../../../assets/styles/settings/spacing";
+
+.modal {
+	display: flex;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 99;
+	width: 100vw;
+	height: 100vh;
+	background-color: rgba($color-blue-shark, 0.7);
+
+	&__content {
+		background-color: transparent;
+	}
+
+	&--fullscreen & {
+		&__content {
+			width: 100vw;
+			height: 100vh;
+			padding: 6rem 0;
+		}
+	}
+
+	&--fullwidth & {
+		&__content {
+			top: 0;
+			width: 100vw;
+			height: 100vh;
+			padding: 6rem 0;
+		}
+	}
+
+	&--boxed & {
+		&__content {
+			@include position-center;
+
+			padding: 6rem;
+			border-radius: $border-radius-default;
+		}
+	}
+
+	&__close-btn {
+		position: absolute;
+		top: 2.5rem;
+		right: 2.5rem;
+		width: 2.2rem;
+		height: 2.2rem;
+		padding: 0;
+		overflow: hidden;
+		border: none;
+		background-color: transparent;
+		box-shadow: none;
+		color: $color-blue-shark;
+
+		span {
+			position: absolute;
+			width: 100%;
+			height: 0.1rem;
+			border-bottom: 3px solid currentcolor;
+			pointer-events: none;
+			transition: transform $transition--fast;
+		}
+
+		span:nth-of-type(1) {
+			top: 6px;
+			left: 0;
+			transition-delay: 0.4s;
+		}
+
+		span:nth-of-type(2) {
+			bottom: 4px;
+			left: 0;
+			transition-delay: 0.4s;
+		}
+
+		span:nth-of-type(3) {
+			transform: rotate(45deg) translateX(-30px);
+			transition-delay: 0s;
+		}
+
+		span:nth-of-type(4) {
+			transform: rotate(-45deg) translateX(-30px);
+			transition-delay: 0s;
+		}
+
+		&.is-active span:nth-of-type(1) {
+			transform: translate3d(25px, 0, 0);
+			transition-delay: 0s;
+		}
+
+		&.is-active span:nth-of-type(2) {
+			transform: translate3d(-25px, 0, 0);
+			transition-delay: 0s;
+		}
+
+		&.is-active span:nth-of-type(3) {
+			transform: rotate(45deg) translateX(0);
+			transition-delay: 0.2s;
+		}
+
+		&.is-active span:nth-of-type(4) {
+			transform: rotate(-45deg) translateX(0);
+			transition-delay: 0.2s;
+		}
+	}
+
+	.bg-default {
+		background-color: $color-gray-mischka-tint--20;
+	}
+
+	.bg-black {
+		background-color: $color-black;
+
+		.modal__close-btn {
+			color: $color-white;
+		}
+	}
+
+	iframe {
+		width: 100%;
+		height: 100%;
+	}
+}
+
+@include viewport-medium {
+	.modal {
+		&__content {
+			width: 100vw;
+			height: 100vh;
+			border-radius: 0;
+		}
+	}
+}

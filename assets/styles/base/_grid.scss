@@ -1,0 +1,35 @@
+// main grid wrap
+.main-grid {
+	@include grid;
+	@include set-gutter($gutter-default);
+}
+
+/* stylelint-disable-next-line selector-max-id */
+#smooth-content {
+	overflow: hidden;
+}
+
+.page-wrapper {
+	padding-top: 12.9rem;
+}
+
+@media only screen and (max-width: 1700px) {
+	// main grid wrap
+	.main-grid {
+		@include grid-1440;
+		@include set-gutter($gutter-default);
+	}
+}
+
+@include viewport-medium {
+	// main grid wrap
+	.main-grid {
+		@include grid-mobile;
+
+		@include set-gutter($gutter-mobile);
+	}
+
+	.page-wrapper {
+		padding-top: 9.2rem;
+	}
+}

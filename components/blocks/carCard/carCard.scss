@@ -1,0 +1,64 @@
+@import "../../../assets/styles/tools/mixins";
+@import "../../../assets/styles/settings/vars";
+@import "../../../assets/styles/settings/fonts";
+@import "../../../assets/styles/settings/spacing";
+
+.card-wrapper {
+	gap: 4rem 0;
+}
+
+.sub-headline {
+	max-height: 100%;
+	overflow: hidden;
+}
+
+.car-card {
+	&__wrapper {
+		min-height: 42rem;
+		transition: box-shadow $transition--extra-fast;
+	}
+
+	&__figure {
+		position: relative;
+		height: 21.4rem;
+		overflow: hidden;
+		border-top-left-radius: 0.5rem;
+		border-top-right-radius: 0.5rem;
+	}
+
+	&__tag {
+		position: absolute;
+		top: 1.6rem;
+		left: 1.6rem;
+		padding: 0.6rem 0.8rem;
+		background-color: $color-gray-athens;
+	}
+}
+
+@include viewport-mouse {
+	.car-card {
+		&__wrapper:hover {
+			box-shadow: 0 0.5rem 2rem 0.4rem rgb(30 35 39 / 0.2);
+		}
+	}
+}
+
+@include viewport-medium {
+	.card-wrapper {
+		gap: 2.4rem 0;
+	}
+
+	.sub-headline {
+		max-height: 4.2rem;
+
+		&.is-active {
+			max-height: 100%;
+		}
+	}
+
+	.car-card {
+		&__wrapper {
+			box-shadow: 0 0.5rem 2rem 0.4rem rgb(30 35 39 / 0.2);
+		}
+	}
+}

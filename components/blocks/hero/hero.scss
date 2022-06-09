@@ -1,0 +1,45 @@
+// hero
+/* stylelint-disable unit-no-unknown */
+@import "../../../assets/styles/tools/mixins";
+@import "../../../assets/styles/settings/vars";
+@import "../../../assets/styles/settings/spacing";
+
+.hero {
+	position: relative;
+
+	&__image {
+		aspect-ratio: 132/59;
+		background-color: $color-blue-shark-tint--70;
+	}
+}
+
+@media only screen and (min-height: 750px) {
+	.hero {
+		&__image {
+			max-height: 67vh;
+		}
+	}
+}
+
+@media only screen and (min-height: 900px) {
+	.hero {
+		&__image {
+			max-height: unset;
+		}
+	}
+}
+
+@include viewport-medium {
+	.hero {
+		margin-top: 0;
+
+		&__image {
+			position: relative;
+			left: 50%;
+			width: 100.5vw;
+			border-radius: 0;
+			transform: translateX(-50%);
+			aspect-ratio: 375 /296;
+		}
+	}
+}

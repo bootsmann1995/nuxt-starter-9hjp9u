@@ -1,0 +1,12 @@
+{
+	"recommendations": [
+		"dbaeumer.vscode-eslint",
+		"esbenp.prettier-vscode",
+		"stylelint.vscode-stylelint",
+		"mrmlnc.vscode-scss",
+		"octref.vetur",
+		"christian-kohler.path-intellisense",
+		"aaron-bond.better-comments",
+		"formulahendry.auto-rename-tag"
+	]
+}

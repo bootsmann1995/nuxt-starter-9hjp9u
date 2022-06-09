@@ -1,0 +1,45 @@
+@import "../../../assets/styles/tools/mixins";
+@import "../../../assets/styles/settings/vars";
+@import "../../../assets/styles/settings/spacing";
+
+.department-card {
+	&__figure {
+		overflow: hidden;
+	}
+
+	&__car-collection {
+		max-width: 90%;
+	}
+
+	&__arrow {
+		position: absolute;
+		right: 1.2rem;
+		bottom: 3rem;
+		width: 1.4rem;
+		height: 1.4rem;
+		opacity: 0;
+		fill: $color-blue-shark;
+		transform: translateX(-1.2rem);
+		transition: transform $transition--fast, opacity $transition--fast;
+	}
+}
+
+@include viewport-mouse {
+	.department-card {
+		box-shadow: none;
+		transition: box-shadow $transition--fast;
+
+		&:hover {
+			box-shadow: 0 0.5rem 2rem 0.4rem rgb(30 35 39 / 0.2);
+			transition: box-shadow $transition--fast;
+		}
+
+		&:hover & {
+			&__arrow {
+				opacity: 1;
+				transform: translateX(0);
+				transition: transform $transition--fast, opacity $transition--fast;
+			}
+		}
+	}
+}

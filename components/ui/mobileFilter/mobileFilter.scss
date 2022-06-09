@@ -1,0 +1,94 @@
+@import "../../../assets/styles/settings/fonts";
+@import "../../../assets/styles/settings/vars";
+
+%fixed-setting {
+	position: fixed;
+	top: 1rem;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	padding-right: calc($gutter-mobile * 2);
+	padding-bottom: 14rem;
+	padding-left: calc($gutter-mobile * 2);
+	overflow-y: auto;
+	border-radius: 0.5rem 0.5rem 0 0;
+	background-color: $color-white;
+	box-shadow: 0 0 0 transparent;
+	transform: translateY(100%);
+	transition: transform 0.5s $transition--cubic;
+
+	&.is-active {
+		box-shadow: $shadow-card-small;
+		transform: translateY(0%);
+	}
+}
+
+.filter-mobile {
+	@extend %fixed-setting;
+
+	z-index: 100;
+
+	&__item {
+		position: relative;
+		width: 100%;
+		min-height: 7.2rem;
+		border-right: none;
+		border-bottom: 0.1rem solid $color-gray-mischka-tint--20;
+		border-left: none;
+		background-color: transparent;
+		box-shadow: none;
+	}
+
+	&__item-icon {
+		width: 0.8rem;
+		height: 1.4rem;
+		fill: $color-blue-shark;
+	}
+
+	&__refinements {
+		position: absolute;
+		bottom: 1.4rem;
+		left: 1.2rem;
+		width: calc(100% - 3.2rem);
+	}
+
+	&__close {
+		width: 1.6rem;
+		height: 1.6rem;
+	}
+
+	&.has-child-active {
+		overflow-y: hidden;
+	}
+
+	.filter-current-refinement {
+		@include text-small-small-line-height;
+		@include font-aktiv-grotesk-medium;
+
+		color: $color-blue-shark-tint--70;
+	}
+}
+
+.filter-mobile-sub {
+	@extend %fixed-setting;
+
+	top: 1rem;
+	z-index: 200;
+}
+
+.close-filter-button {
+	width: 100%;
+	background: linear-gradient(182.68deg, #16a2ff 0%, #004878 100%);
+	font-size: 1.4rem;
+
+	&__count {
+		@include button-text;
+
+		display: inline;
+		position: relative;
+
+		// overwrites algolia default styles.
+		color: $color-white !important;
+		font-size: 1.4rem !important;
+	}
+}

@@ -5,3 +5,7 @@ node_modules
 .cache
 .output
 .env
+.vscode/tasks.json
+
+dist
+public/staticwebapp.config.json

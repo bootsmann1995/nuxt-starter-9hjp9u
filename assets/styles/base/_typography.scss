@@ -1,0 +1,493 @@
+// typography
+
+// Headlines
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.headline-1,
+.headline-2,
+.headline-3,
+.headline-4 {
+	margin: unset;
+	color: $color-blue-shark;
+	word-break: break-word;
+	word-wrap: break-word;
+}
+
+h1,
+.headline {
+	// Used as an extra-large h1 tag
+	&-0 {
+		@include heading-0;
+	}
+
+	// Normal / default h1 tag
+	&-1 {
+		@include heading-1;
+	}
+}
+
+h2,
+.headline-2 {
+	@include heading-2;
+}
+
+h3,
+.headline-3 {
+	@include heading-3;
+}
+
+h4,
+.headline-4 {
+	@include heading-4;
+
+	&--mobile-large {
+		@include font-aktiv-grotesk-medium;
+
+		font-size: clamp(2.2rem, rem-to-vw(2.2rem), 2.2rem);
+		line-height: clamp(2.6rem, rem-to-vw(2.6rem), 2.6rem);
+		letter-spacing: -0.2px;
+	}
+}
+
+h5,
+.headline-5 {
+	@include heading-5;
+
+	color: $color-blue-shark;
+}
+
+.text-manchet {
+	@include manchet-text;
+
+	color: $color-blue-shark;
+}
+
+p {
+	@include font-aktiv-grotesk;
+	@include text-default;
+}
+
+// Text color classes
+.text-shark {
+	color: $color-blue-shark;
+
+	&--tint-80 {
+		color: $color-blue-shark-tint--80;
+	}
+}
+
+.text-regal {
+	color: $color-blue-regal;
+}
+
+.text-label {
+	@include text-label;
+
+	color: $color-blue-shark-tint--80;
+
+	&--dark {
+		color: $color-blue-shark;
+	}
+}
+
+.text-p {
+	@include text-default;
+
+	color: $color-blue-shark-tint--80;
+
+	&--bold {
+		color: $color-blue-shark;
+		font-weight: 700;
+	}
+}
+
+.text-p--small {
+	@include text-small;
+}
+
+.text-tagline {
+	@include text-tagline;
+
+	color: $color-blue-shark-tint--80;
+	text-transform: uppercase;
+
+	&--compressed {
+		@include font-aktiv-grotesk-medium;
+
+		text-transform: none;
+		line-height: clamp(1.2rem, rem-to-vw(1.7rem), 1.4rem);
+		line-height: normal;
+		letter-spacing: unset;
+	}
+}
+
+.text-navigation {
+	@include text-navigation;
+
+	display: flex;
+	align-items: center;
+	color: $color-blue-regal;
+
+	&--simple {
+		@include font-aktiv-grotesk;
+
+		color: $color-blue-shark-tint--80;
+	}
+
+	&--dark {
+		color: $color-blue-shark;
+	}
+
+	&--regular {
+		@include font-aktiv-grotesk;
+	}
+
+	&--bold {
+		@include font-aktiv-grotesk-bold;
+	}
+
+	&--back {
+		@include font-aktiv-grotesk-medium;
+	}
+
+	&--back svg {
+		width: 1.4rem;
+		height: 1.4rem;
+		fill: $color-blue-regal;
+		transform: translateX(0) rotate(180deg);
+		transition: transform $transition;
+	}
+
+	&--back:hover svg {
+		transform: translateX(-5px) rotate(180deg);
+	}
+
+	&--text-line-height {
+		line-height: clamp(2.1rem, rem-to-vw(2.4rem), 2.4rem);
+	}
+}
+
+// Header
+.topbar-usp-text {
+	@include font-aktiv-grotesk-medium;
+
+	color: $color-blue-shark-tint--70;
+	font-size: clamp(1.2rem, rem-to-vw(1.2rem), 1.2rem);
+	line-height: clamp(1.4rem, rem-to-vw(1.4rem), 1.4rem);
+}
+
+.navigation-link {
+	@include font-aktiv-grotesk-medium;
+
+	position: relative;
+	height: 100%;
+	border: none;
+	border-radius: 0;
+	background-color: transparent;
+	box-shadow: none;
+	color: $color-blue-shark;
+	font-size: clamp(1.2rem, rem-to-vw(1.6rem), 1.6rem);
+	line-height: clamp(1.4rem, rem-to-vw(1.6rem), 1.6rem);
+	cursor: pointer;
+	transition: color 0.2s $transition--cubic;
+
+	/* stylelint-disable-next-line no-descending-specificity */
+	svg {
+		transition: fill 0.2s $transition--cubic;
+	}
+
+	&--small {
+		font-size: clamp(1rem, rem-to-vw(1rem), 1rem);
+		line-height: clamp(1.4rem, rem-to-vw(1.6rem), 1.6rem);
+
+		&::after {
+			display: none;
+		}
+	}
+
+	&::after {
+		content: "";
+		position: absolute;
+		bottom: -1px;
+		left: 0;
+		z-index: 2;
+		width: 0%;
+		height: 0.1rem;
+		background-color: $color-blue-regal;
+		transition: $transition;
+	}
+
+	&:hover {
+		color: $color-blue-regal;
+
+		svg {
+			fill: $color-blue-regal;
+		}
+	}
+
+	&:hover::after {
+		width: 100%;
+	}
+
+	&.is-active {
+		color: $color-blue-regal;
+	}
+
+	&.is-active::after {
+		width: 100%;
+	}
+}
+
+.sub-menu-link {
+	@include font-aktiv-grotesk;
+
+	color: $color-blue-shark;
+	font-size: clamp(1.4rem, rem-to-vw(1.4rem), 1.4rem);
+	line-height: clamp(2rem, rem-to-vw(2rem), 2rem);
+	letter-spacing: 0.06rem;
+	transition: color 0.3s $transition--cubic;
+
+	&:hover {
+		color: $color-blue-regal;
+	}
+
+	/* stylelint-disable-next-line scss/percent-placeholder-pattern */
+	&--gray {
+		color: $color-blue-shark-tint--70;
+
+		/* stylelint-disable-next-line scss/percent-placeholder-pattern */
+		&.sub-menu-link--no-hover {
+			color: $color-blue-shark-tint--70;
+		}
+	}
+
+	&--medium {
+		font-weight: 500;
+	}
+
+	/* stylelint-disable-next-line scss/percent-placeholder-pattern */
+	&--blue {
+		color: $color-blue-regal;
+
+		/* stylelint-disable-next-line scss/percent-placeholder-pattern */
+		&.sub-menu-link--no-hover {
+			color: $color-blue-regal;
+		}
+	}
+}
+
+.sub-menu-link-mobile {
+	@include font-aktiv-grotesk-medium;
+
+	color: $color-blue-shark;
+	font-size: clamp(1.6rem, rem-to-vw(1.6rem), 1.6rem);
+	line-height: clamp(2.2rem, rem-to-vw(2.2rem), 2.2rem);
+	letter-spacing: 0.06rem;
+	transition: color 0.3s $transition--cubic;
+
+	&--small {
+		font-size: clamp(1.4rem, rem-to-vw(1.4rem), 1.4rem);
+		line-height: clamp(2rem, rem-to-vw(2.2rem), 2rem);
+		letter-spacing: 0.06rem;
+	}
+
+	&--gray {
+		color: $color-blue-shark-tint--70;
+
+		&.sub-menu-link--no-hover {
+			color: $color-blue-shark-tint--70;
+		}
+	}
+
+	&--medium {
+		@include font-aktiv-grotesk-medium;
+	}
+}
+
+.sub-headline-text {
+	@include font-aktiv-grotesk;
+	@include text-default;
+
+	color: $color-blue-shark;
+
+	&--small {
+		@include font-aktiv-grotesk;
+
+		color: $color-blue-shark-tint--80;
+		font-size: clamp(1.6rem, rem-to-vw(1.6rem), 1.4rem);
+		line-height: clamp(2.2rem, rem-to-vw(2.2rem), 2rem);
+	}
+
+	&--tint-80 {
+		color: $color-blue-shark-tint--80;
+	}
+
+	&--bold {
+		@include font-aktiv-grotesk-bold;
+	}
+}
+
+.card-tag {
+	@include font-aktiv-grotesk-medium;
+
+	font-size: clamp(1.2rem, rem-to-vw(1.2rem), 1.2rem);
+	line-height: clamp(1.4rem, rem-to-vw(1.4rem), 1.4rem);
+
+	&--regal {
+		color: $color-blue-regal;
+	}
+}
+
+.card-price {
+	@include font-aktiv-grotesk-medium;
+
+	color: $color-blue-shark;
+	font-size: clamp(1.8rem, rem-to-vw(1.8rem), 1.8rem);
+	line-height: clamp(2.4rem, rem-to-vw(2.4rem), 2.4rem);
+
+	@include viewport-medium {
+		font-size: clamp(2rem, rem-to-vw(2rem), 2rem);
+		line-height: clamp(2.8rem, rem-to-vw(2.8rem), 2.8rem);
+	}
+}
+
+.mobile-menu-link {
+	@include font-aktiv-grotesk-medium;
+
+	color: $color-blue-shark;
+	font-size: clamp(2rem, rem-to-vw(2rem), 2rem);
+	line-height: clamp(2.2rem, rem-to-vw(2.2rem), 2.2rem);
+
+	&--small {
+		font-size: clamp(1.6rem, rem-to-vw(1.6rem), 1.6rem);
+		line-height: clamp(2.2rem, rem-to-vw(2.2rem), 2.2rem);
+	}
+}
+
+.mobile-function-link {
+	@include font-aktiv-grotesk-medium;
+
+	color: $color-blue-shark;
+	font-size: clamp(1.6rem, rem-to-vw(1.6rem), 1.6rem);
+	line-height: clamp(1.6rem, rem-to-vw(1.6rem), 1.6rem);
+
+	&--bold {
+		@include font-aktiv-grotesk-bold;
+	}
+}
+
+// focus box
+.focus-box-headline {
+	@include font-aktiv-grotesk-medium;
+	@include heading-3;
+
+	color: $color-blue-shark;
+}
+
+.focus-box-tagline {
+	@include font-aktiv-grotesk-bold;
+
+	color: $color-blue-shark-tint--80;
+	font-size: clamp(1rem, rem-to-vw(1.2rem), 1.2rem);
+	text-transform: uppercase;
+	line-height: clamp(1.4rem, rem-to-vw(1.6rem), 1.6rem);
+	letter-spacing: 0.01rem;
+
+	&--normal-letters {
+		letter-spacing: normal;
+	}
+
+	&--no-transform {
+		text-transform: none;
+	}
+}
+
+.focus-box-text {
+	@include font-aktiv-grotesk;
+
+	color: $color-blue-shark-tint--80;
+	font-size: clamp(1.4rem, rem-to-vw(1.6rem), 1.6rem);
+	line-height: clamp(2.2rem, rem-to-vw(2.4rem), 2.4rem);
+}
+
+.spec-text {
+	@include spec-text;
+
+	color: $color-blue-regal;
+
+	&--medium {
+		@include font-aktiv-grotesk-medium;
+	}
+
+	&--bold {
+		@include font-aktiv-grotesk-bold;
+
+		color: $color-blue-regal;
+		font-weight: 700 !important;
+	}
+}
+
+// Footer
+.footer-links {
+	@include font-aktiv-grotesk;
+
+	font-size: clamp(1.4rem, rem-to-vw(1.4rem), 1.4rem);
+	line-height: clamp(2rem, rem-to-vw(2.2rem), 2rem);
+}
+
+.footer-contact-text {
+	@include font-aktiv-grotesk;
+
+	font-size: clamp(1.4rem, rem-to-vw(1.4rem), 1.4rem);
+	line-height: clamp(2rem, rem-to-vw(2rem), 2rem);
+
+	&--small {
+		@include font-aktiv-grotesk-medium;
+
+		font-size: clamp(1rem, rem-to-vw(1.2rem), 1.2rem);
+		line-height: clamp(1.4rem, rem-to-vw(1.4rem), 1.4rem);
+	}
+
+	&--medium {
+		@include font-aktiv-grotesk-medium;
+	}
+
+	&--bold {
+		@include font-aktiv-grotesk-bold;
+	}
+}
+
+@include viewport-medium {
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6,
+	.headline-0,
+	.headline-1,
+	.headline-2,
+	.headline-3,
+	.headline-4 {
+		letter-spacing: -0.2px;
+	}
+
+	.focus-box-tagline {
+		letter-spacing: 0.08rem;
+
+		&--normal-letters {
+			letter-spacing: normal;
+		}
+	}
+
+	.text-tagline {
+		&--compressed {
+			font-size: 1.4rem;
+			line-height: 1.4rem;
+		}
+	}
+}

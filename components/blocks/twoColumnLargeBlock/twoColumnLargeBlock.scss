@@ -1,0 +1,57 @@
+/* stylelint-disable unit-no-unknown */
+@import "../../../assets/styles/settings/vars";
+@import "../../../assets/styles/tools/mixins";
+@import "../../../assets/styles/settings/spacing";
+
+.two-column-large-block {
+	&__container {
+		border-radius: $border-radius-default;
+		background-color: $color-gray-mischka-tint--30;
+	}
+
+	&__content {
+		padding: spacing(component, 3xl);
+	}
+
+	&__content,
+	&__media {
+		width: 50%;
+	}
+
+	&__media img {
+		border-radius: 0 $border-radius-default $border-radius-default 0;
+	}
+
+	&:not(.is-reversed) & {
+		&__media img {
+			border-radius: $border-radius-default 0 0 $border-radius-default;
+		}
+	}
+}
+
+@include viewport-medium {
+	.two-column-large-block {
+		&__container {
+			flex-direction: column;
+		}
+
+		&__content {
+			padding: spacing(component, 2l);
+		}
+
+		&__content,
+		&__media {
+			width: 100%;
+		}
+
+		&__media img {
+			border-radius: $border-radius-default $border-radius-default 0 0;
+		}
+
+		&:not(.is-reversed) & {
+			&__media img {
+				border-radius: $border-radius-default $border-radius-default 0 0;
+			}
+		}
+	}
+}

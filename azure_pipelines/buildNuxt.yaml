@@ -1,0 +1,38 @@
+parameters:
+  - name: envVariables
+    type: object
+
+steps:
+  - task: Cache@2
+    displayName: node_modules cache
+    inputs:
+      key: 'node_modules | "$(Agent.OS)" | $(Build.SourcesDirectory)/package.json, $(Build.SourcesDirectory)/package-lock.json'
+      path: "$(Build.SourcesDirectory)/node_modules"
+      cacheHitVar: "MODULES_CACHE_RESTORED"
+
+  - task: Npm@1
+    displayName: "run npm ci"
+    condition: ne(variables.MODULES_CACHE_RESTORED, 'true')
+    inputs:
+      command: "ci"
+
+  - task: Npm@1
+    displayName: "generate pages"
+    inputs:
+      command: "custom"
+      customCommand: "run generate"
+    env: ${{parameters.envVariables}}
+
+  - task: ArchiveFiles@2
+    inputs:
+      rootFolderOrFile: "$(Build.SourcesDirectory)/.output"
+      includeRootFolder: false
+      archiveType: "zip"
+      archiveFile: "$(Build.ArtifactStagingDirectory)/$(outDir).zip"
+      replaceExistingArchive: true
+
+  - task: PublishBuildArtifacts@1
+    inputs:
+      PathtoPublish: "$(Build.ArtifactStagingDirectory)/$(outDir).zip"
+      ArtifactName: "drop"
+      publishLocation: "Container"

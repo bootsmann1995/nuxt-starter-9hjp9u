@@ -1,0 +1,43 @@
+/* stylelint-disable unit-no-unknown */
+@import "../../../assets/styles/tools/mixins";
+@import "../../../assets/styles/settings/vars";
+@import "../../../assets/styles/settings/spacing";
+
+.contact-departments {
+	&__btn-wrapper {
+		gap: 0 spacing(component, 4l);
+	}
+
+	a::after {
+		background-color: $color-blue-regal;
+	}
+
+	&__contact-wrapper {
+		margin-right: -$gutter-default;
+		margin-left: -$gutter-default;
+		gap: spacing(component, xl) 0;
+	}
+
+	&__icon {
+		width: 2rem;
+		height: 2rem;
+		fill: $color-blue-regal;
+	}
+}
+
+@include viewport-medium {
+	.contact-departments {
+		&__btn-wrapper {
+			gap: spacing(component, s) 0;
+			flex-direction: column;
+		}
+
+		&__content-wrapper {
+			flex-direction: column;
+		}
+
+		&__contact-wrapper {
+			gap: spacing(component, 2l) 0;
+		}
+	}
+}

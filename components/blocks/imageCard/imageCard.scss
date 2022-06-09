@@ -1,0 +1,51 @@
+// image card
+@import "../../../assets/styles/settings/vars";
+@import "../../../assets/styles/tools/mixins";
+
+.image-card {
+	transition: box-shadow $transition;
+
+	&__img {
+		aspect-ratio: 4/3;
+	}
+
+	&__headline {
+		position: relative;
+		padding-right: 4rem;
+	}
+
+	&__icon {
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		width: 1.4rem;
+		height: 1.4rem;
+		opacity: 0;
+		fill: $color-blue-regal;
+		transform: translateX(-1rem);
+		transition: all $transition;
+		will-change: opacity, transform;
+	}
+
+	&:hover {
+		box-shadow: 0 2.5rem 2.5rem 0 #e8ebee;
+
+		.image-card__icon {
+			opacity: 1;
+			transform: translateX(0);
+		}
+	}
+}
+
+@include viewport-medium {
+	.image-card {
+		&:hover {
+			box-shadow: none;
+
+			.image-card__icon {
+				opacity: 0;
+				transform: translateX(0);
+			}
+		}
+	}
+}

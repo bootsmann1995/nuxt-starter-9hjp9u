@@ -1,0 +1,244 @@
+/* stylelint-disable unit-no-unknown */
+// buttons
+
+%btn {
+	@include button-text;
+
+	display: inline-block;
+	padding: spacing(component, s) spacing(component, 4l);
+	border-radius: 0.4rem;
+}
+
+.btn-primary {
+	@extend %btn;
+
+	background: linear-gradient(209.44deg, $color-blue-dodger 0%, $color-blue-regal 100%);
+	color: $color-white;
+	transition: box-shadow $transition;
+}
+
+.btn-secondary {
+	@extend %btn;
+	@include text-gradient;
+
+	border: 0.1rem solid $color-blue-regal;
+
+	&--width-unset {
+		width: unset;
+	}
+
+	&--medium {
+		@include font-aktiv-grotesk-medium;
+	}
+
+	&--dodger-border {
+		border: 0.1rem solid $color-blue-dodger;
+		color: $color-blue-dodger;
+	}
+}
+
+.btn--no-bg {
+	@include button-text;
+
+	color: $color-blue-shark;
+}
+
+.btn-filter {
+	position: relative;
+
+	svg {
+		width: 1.7rem;
+		height: 1.7rem;
+	}
+
+	/* stylelint-disable-next-line selector-class-pattern */
+	.ais-CurrentRefinements {
+		position: absolute;
+		right: -1.8rem;
+	}
+
+	.icon-sort {
+		width: 2.2rem;
+		height: 1.2rem;
+	}
+
+	&__count {
+		@include text-label;
+		@include font-aktiv-grotesk;
+
+		position: relative;
+		top: 0.1rem;
+		width: 1.8rem;
+		height: 1.8rem;
+		border-radius: 50%;
+		background: linear-gradient(182.68deg, #16a2ff 0%, #004878 100%);
+		color: $color-white;
+		line-height: 1.7rem;
+	}
+}
+
+.tag {
+	@include text-label;
+
+	box-sizing: border-box;
+	height: 3.2rem;
+	padding: spacing(component, xxs) spacing(component, s);
+	border: 0.1rem solid $color-blue-shark;
+	border-radius: 0.4rem;
+	color: $color-blue-shark;
+	transition: all $transition--fast;
+	will-change: background-color, color, border-color;
+
+	&--gray-bg {
+		background-color: $color-gray-mischka-tint--40;
+	}
+
+	&.is-active {
+		border-color: $color-blue-regal;
+		background-color: $color-blue-regal;
+		color: $color-white;
+	}
+}
+
+.btn-play-icon {
+	display: flex;
+	width: 6.2rem;
+	height: 6.2rem;
+	background: $linear-gradient-circle;
+	color: $color-white;
+	clip-path: circle();
+	cursor: pointer;
+
+	svg {
+		width: 1.7rem;
+		max-width: 1.7rem;
+		height: 1.3rem;
+		max-height: 1.3rem;
+		margin: auto;
+	}
+
+	&--large {
+		width: 8rem;
+		height: 8rem;
+
+		svg {
+			width: 2.2rem;
+			max-width: 2.2rem;
+			height: 1.7rem;
+			max-height: 1.7rem;
+		}
+
+		&:hover,
+		&:active {
+			box-shadow: $shadow-button-icon-large;
+		}
+	}
+
+	&:hover,
+	&:active {
+		box-shadow: $shadow-button-icon;
+	}
+}
+
+.btn-tertiary {
+	@include text-default;
+	@include font-aktiv-grotesk-medium;
+
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	color: $color-blue-regal;
+
+	&--icon-first svg {
+		width: 0.7rem;
+		height: 1.2rem;
+		transform: rotate(180deg);
+	}
+
+	svg {
+		width: 1.8rem;
+		height: 1.7rem;
+		fill: currentcolor;
+		transition: transform $transition;
+	}
+
+	&:hover svg {
+		transform: translateX(5px);
+	}
+
+	&--big {
+		@include manchet-text;
+
+		letter-spacing: 0.06rem;
+	}
+}
+
+@include viewport-medium {
+	%btn {
+		width: calc(100% - 4rem);
+	}
+
+	.btn-secondary {
+		&--width-unset {
+			width: unset;
+		}
+	}
+
+	.btn-play-icon {
+		width: 5.6rem;
+		height: 5.6rem;
+
+		svg {
+			width: 1.15rem;
+			max-width: 1.15rem;
+			height: 1.15rem;
+			max-height: 1.15rem;
+		}
+	}
+
+	.btn-filter {
+		@include font-aktiv-grotesk-medium;
+
+		color: $color-blue-shark-tint--80;
+		font-size: 1.4rem;
+		font-weight: 500;
+
+		svg {
+			width: 1.7rem;
+			height: 1.7rem;
+			fill: $color-blue-shark;
+		}
+	}
+}
+
+// Hover states
+@include viewport-mouse {
+	// Primary button hover
+	.btn-primary {
+		&:hover {
+			box-shadow: $shadow-button-small;
+		}
+	}
+
+	// Link CTA hover
+	.btn-tertiary {
+		&:hover svg {
+			transform: translateX(5px);
+		}
+	}
+
+	// hover btn-icon
+	.btn-play-icon {
+		&--large {
+			&:hover,
+			&:active {
+				box-shadow: $shadow-button-icon-large;
+			}
+		}
+
+		&:hover,
+		&:active {
+			box-shadow: $shadow-button-icon;
+		}
+	}
+}

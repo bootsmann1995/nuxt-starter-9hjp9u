@@ -1,0 +1,52 @@
+// hero
+/* stylelint-disable unit-no-unknown */
+@import "../../../assets/styles/tools/mixins";
+@import "../../../assets/styles/settings/vars";
+@import "../../../assets/styles/settings/spacing";
+@import "../../../assets/styles/settings/fonts";
+@import "../../../assets/styles/base/typography";
+
+.hero {
+	position: relative;
+
+	&__image {
+		aspect-ratio: 132/59;
+		background-color: $color-blue-shark-tint--70;
+	}
+}
+
+.content-page-intro {
+	@include text-default;
+
+	color: $color-blue-shark-tint--80;
+
+	h1 {
+		@include heading-1;
+
+		margin-top: 0;
+		margin-bottom: spacing(component, l);
+	}
+
+	b {
+		@include font-aktiv-grotesk-medium;
+
+		color: $color-blue-shark;
+		font-size: clamp(2rem, rem-to-vw(2rem), 1.8rem);
+		line-height: clamp(2.8rem, rem-to-vw(2.8rem), 2.4rem);
+	}
+}
+
+@include viewport-medium {
+	.hero {
+		margin-top: 0;
+
+		&__image {
+			position: relative;
+			left: 50%;
+			width: 100.5vw;
+			border-radius: 0;
+			transform: translateX(-50%);
+			aspect-ratio: 375 /296;
+		}
+	}
+}

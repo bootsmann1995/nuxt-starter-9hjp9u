@@ -1,0 +1,59 @@
+@import "../../../assets/styles/tools/mixins";
+@import "../../../assets/styles/settings/vars";
+@import "../../../assets/styles/settings/fonts";
+@import "../../../assets/styles/settings/spacing";
+
+// reference block
+.reference-block {
+	&__btn-mobile {
+		display: none;
+	}
+
+	&__header {
+		opacity: 0;
+		transform: translateY(-3rem);
+		transition: all $transition;
+	}
+
+	&__btn-desktop {
+		opacity: 0;
+		transform: translateY(-3rem);
+		transition: all $transition;
+	}
+
+	.article {
+		opacity: 0;
+		transform: translateY(3rem);
+	}
+
+	&.animation-active {
+		.reference-block__header {
+			opacity: 1;
+			transform: translateY(0);
+		}
+
+		.reference-block__btn-desktop {
+			opacity: 1;
+			transform: translateY(0);
+		}
+
+		.article {
+			opacity: 1;
+			transform: translateY(0);
+			transition: all $transition;
+		}
+	}
+}
+
+@include viewport-medium {
+	.reference-block {
+		&__btn-desktop {
+			display: none;
+		}
+
+		&__btn-mobile {
+			display: flex;
+			justify-content: center;
+		}
+	}
+}

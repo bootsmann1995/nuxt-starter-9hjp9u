@@ -1,3 +1,29 @@
-# nuxt-starter-9hjp9u
+# Nuxt 3 Minimal Starter
 
-[Edit on StackBlitz ⚡️](https://stackblitz.com/edit/nuxt-starter-9hjp9u)
+We recommend to look at the [documentation](https://v3.nuxtjs.org).
+
+## Setup
+
+Make sure to install the dependencies
+
+```bash
+yarn install
+```
+
+## Development
+
+Start the development server on http://localhost:3000
+
+```bash
+yarn dev
+```
+
+## Production
+
+Build the application for production:
+
+```bash
+yarn build
+```
+
+Checkout the [deployment documentation](https://v3.nuxtjs.org/docs/deployment).

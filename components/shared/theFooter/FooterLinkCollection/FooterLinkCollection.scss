@@ -1,0 +1,18 @@
+@import "../../../../assets/styles/tools/mixins";
+@import "../../../../assets/styles/settings/vars";
+@import "../../../../assets/styles/settings/fonts";
+
+.footer-links-collection {
+	max-width: 12rem;
+	color: $color-blue-shark;
+
+	&__link {
+		position: relative;
+		width: fit-content;
+		color: $color-blue-shark;
+
+		&::after {
+			background-color: $color-blue-shark;
+		}
+	}
+}

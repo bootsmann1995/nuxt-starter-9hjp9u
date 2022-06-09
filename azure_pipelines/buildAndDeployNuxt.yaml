@@ -1,0 +1,77 @@
+parameters:
+  - name: isCms
+    type: boolean
+  - name: environment
+    type: string
+  - name: domain
+    type: string
+  - name: serverRender
+    type: boolean
+  - name: deployBranch
+    type: string
+  - name: azureResourceManagerConnection
+    type: string
+  - name: azureSubscriptionId
+    type: string
+  - name: armTemplateFile
+    type: string
+  - name: armParameterFile
+    type: string
+  - name: solutionName
+    type: string
+  - name: siteName
+    type: string
+
+stages:
+  - stage: "Build_${{parameters.environment}}"
+    condition: and(in(dependencies.BuildBicep.result, 'Succeeded', 'Skipped'), ne(${{parameters.isCms}}, true))
+    dependsOn: [BuildBicep]
+
+    variables:
+      - group: "${{parameters.solutionName}}-${{parameters.environment}}"
+      - group: "kv-${{parameters.solutionName}}-${{parameters.environment}}"
+
+      - name: resourceGroupName
+        value: "rg-${{parameters.solutionName}}-${{parameters.environment}}"
+      - name: vaultName
+        value: "kv-${{parameters.solutionName}}-${{parameters.environment}}"
+      - name: appName
+        value: "${{parameters.solutionName}}-${{parameters.siteName}}-${{parameters.environment}}"
+      - name: outDir
+        value: "dist-${{parameters.environment}}"
+      - name: environment
+        value: ${{parameters.environment}}
+
+    jobs:
+      - job: Build
+        steps:
+          - template: "./buildNuxt.yaml"
+            parameters:
+              envVariables:
+                outDir: $(outDir)
+                SERVER_RENDER: ${{parameters.serverRender}}
+                BASE_URL: $(BASE_URL)
+                ROBOTS: $(ROBOTS)
+
+      - deployment: Deploy
+        dependsOn: [Build]
+        condition: and(succeeded(), eq(variables['build.sourceBranch'], '${{parameters.deployBranch}}'))
+        displayName: "Deploy resources to Azure"
+        environment: ${{parameters.environment}}
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - template: ./deployStaticWeb.yaml
+                  parameters:
+                    environment: ${{parameters.environment}}
+                    domain: ${{parameters.domain}}
+                    azureResourceManagerConnection: ${{parameters.azureResourceManagerConnection}}
+                    azureSubscriptionId: ${{parameters.azureSubscriptionId}}
+                    armTemplateFile: ${{parameters.armTemplateFile}}
+                    armParameterFile: ${{parameters.armParameterFile}}
+                    appName: $(appName)
+                    deploymentToken: $(stapp-av-ecommerce-avdk-${{parameters.environment}}-deploymentToken)
+                    resourceGroupName: $(resourceGroupName)
+                    vaultName: $(vaultName)
+                    isCms: ${{parameters.isCms}}

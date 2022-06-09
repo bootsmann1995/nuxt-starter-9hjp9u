@@ -1,13 +1,52 @@
 {
-  "private": true,
-  "scripts": {
-    "build": "nuxt build",
-    "dev": "nuxt dev",
-    "generate": "nuxt generate",
-    "preview": "nuxt preview"
-  },
-  "devDependencies": {
-    "nuxt": "3.0.0-rc.3",
-    "vue-demi": "*"
-  }
+	"private": true,
+	"scripts": {
+		"build": "nuxt build",
+		"dev": "nuxt dev",
+		"generate": "nuxt generate",
+		"preview": "nuxt preview",
+		"start": "nuxt start"
+	},
+	"devDependencies": {
+		"@contentful/rich-text-types": "^15.12.1",
+		"@lait/stylelint-config": "^1.2.0",
+		"@nuxtjs/algolia": "^0.9.1",
+		"@nuxtjs/eslint-config-typescript": "^9.0.0",
+		"@vue/eslint-config-prettier": "^7.0.0",
+		"@vue/eslint-config-typescript": "^10.0.0",
+		"@vueuse/core": "^8.5.0",
+		"@vueuse/nuxt": "^8.4.1",
+		"axios": "^0.27.2",
+		"esbuild": "^0.14.39",
+		"eslint": "^8.14.0",
+		"eslint-config-prettier": "^8.5.0",
+		"eslint-plugin-prettier": "^4.0.0",
+		"eslint-plugin-vue": "^8.7.1",
+		"fs": "^0.0.1-security",
+		"nuxt": "^3.0.0-rc.3",
+		"postcss": "^8.3.3",
+		"postcss-scss": "^4.0.4",
+		"prettier": "^2.6.2",
+		"sass": "^1.49.9",
+		"stylelint": "^14.5.3",
+		"swiper": "^8.1.4",
+		"typescript-eslint": "0.0.1-alpha.0",
+		"vue-server-renderer": "^2.6.14"
+	},
+	"dependencies": {
+		"@nuxt/kit": "^3.0.0-rc.3",
+		"@contentful/rich-text-html-renderer": "^15.13.1",
+		"@nuxt/vite-builder": "^3.0.0-rc.3",
+		"@vueuse/components": "^8.4.2",
+		"algoliasearch": "^4.13.0",
+		"contentful-rich-text-vue-renderer": "^2.1.0",
+		"graphql": "^16.4.0",
+		"graphql-request": "^4.2.0",
+		"graphql-tag": "^2.12.6",
+		"gsap": "npm:@gsap/shockingly@^3.10.4",
+		"instantsearch.css": "^7.4.5",
+		"nuxi": "^3.0.0-rc.3",
+		"typescript": "^4.6.4",
+		"vue-instantsearch": "^4.3.3"
+	}
 }

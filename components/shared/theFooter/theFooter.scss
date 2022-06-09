@@ -1,0 +1,176 @@
+/* stylelint-disable unit-no-unknown */
+@import "../../../assets/styles/tools/mixins";
+@import "../../../assets/styles/settings/vars";
+@import "../../../assets/styles/settings/fonts";
+@import "../../../assets/styles/settings/spacing";
+
+.footer {
+	position: relative;
+	color: $color-white;
+
+	.headline-3 {
+		color: $color-white;
+	}
+
+	svg {
+		fill: $color-white;
+	}
+
+	&__trustpilot-headline {
+		padding-bottom: spacing(component, 4l);
+
+		&::after {
+			content: "";
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			height: 0.1rem;
+			background-color: $color-gray-mischka-tint--60;
+		}
+	}
+
+	&__trustpilot-content {
+		margin-top: spacing(component, 4l);
+		margin-bottom: spacing(layout, 2l);
+		color: $color-blue-shark;
+	}
+
+	&__banner {
+		padding-top: spacing(layout, 2l);
+		padding-bottom: spacing(layout, 2l) + spacing(component, xs);
+		background: linear-gradient(182.6754deg, $color-blue-dodger 0%, $color-blue-regal 50%);
+	}
+
+	&__banner-contact {
+		gap: 3.2rem 10rem;
+
+		a {
+			color: $color-white;
+		}
+
+		button {
+			width: fit-content;
+			padding: 0;
+			border: none;
+			background: none;
+			color: $color-white;
+			text-align: left;
+			cursor: pointer;
+		}
+
+		a::after,
+		button::after {
+			background-color: $color-white;
+		}
+	}
+
+	&__banner-icon {
+		width: 2.4rem;
+		height: 2.4rem;
+	}
+
+	&__legal-section {
+		position: relative;
+		color: $color-blue-shark;
+	}
+
+	h3.footer-links {
+		@include font-aktiv-grotesk-medium;
+
+		color: $color-blue-shark-tint--70;
+	}
+
+	&__legal-link {
+		position: relative;
+		color: $color-blue-shark;
+
+		&::after {
+			background-color: $color-blue-shark;
+		}
+	}
+
+	&__divider {
+		position: relative;
+		width: 0.1rem;
+		height: 100%;
+		min-height: 16.8rem;
+		margin-right: spacing(layout, 2l);
+		margin-left: spacing(layout, 2l);
+		background-color: $color-gray-mischka-tint--60;
+	}
+
+	&__some-section {
+		height: 3.8rem;
+		background-color: $color-gray-mischka-tint--30;
+
+		h3 {
+			color: $color-blue-shark-tint--70;
+		}
+
+		a {
+			color: $color-blue-shark-tint--70;
+		}
+
+		a::after {
+			background-color: $color-blue-shark-tint--70;
+		}
+	}
+
+	&__legal-section-wrapper {
+		gap: spacing(layout, xs) spacing(layout, l);
+
+		h3 {
+			// custom spacing
+			padding-right: 5.7rem;
+		}
+	}
+}
+
+@include viewport-medium {
+	.footer {
+		&__trustpilot-headline {
+			padding-bottom: spacing(component, l);
+		}
+
+		&__trustpilot-content {
+			margin-top: spacing(layout, xs);
+			margin-bottom: spacing(layout, 2l);
+		}
+
+		&__banner {
+			padding-top: spacing(layout, m);
+			padding-bottom: spacing(layout, l);
+		}
+
+		&__banner-wrapper,
+		&__banner-header {
+			align-items: flex-start;
+			justify-content: flex-start;
+		}
+
+		&__banner-contact {
+			flex-direction: column;
+		}
+
+		&__banner-contact a::after,
+		&__banner-contact button::after {
+			bottom: -0.3rem;
+			width: 100%;
+			height: 0.2rem;
+		}
+
+		&__links-collection,
+		&__legal-section {
+			display: none;
+		}
+
+		&__some-section {
+			height: 100%;
+		}
+
+		&__some-wrapper {
+			flex-direction: column-reverse;
+		}
+	}
+}
