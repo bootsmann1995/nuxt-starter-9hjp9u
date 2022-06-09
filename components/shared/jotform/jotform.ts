@@ -1,7 +1,5 @@
 import { useConfirmDialog } from "@vueuse/core";
-import gsap from "gsap";
 import { CustomEase } from "gsap/CustomEase";
-import DrawSvg from "gsap/DrawSVGPlugin";
 import { IButton } from "~~/interfaces/global";
 
 export default defineNuxtComponent({
@@ -63,26 +61,6 @@ export default defineNuxtComponent({
 
 		function animateSuccess() {
 			const ease = CustomEase.create("custom", "0.785, 0.135, 0.15, 0.86");
-			if (gsap.plugins.drawSVG == null) {
-				gsap.registerPlugin(DrawSvg);
-			}
-
-			nextTick(() => {
-				if (checkmarkIcon.value && circleIcon.value) {
-					const checkmarkTl = gsap.timeline();
-					checkmarkTl.from(checkmarkIcon.value, {
-						duration: 0.3,
-						drawSVG: "0 0",
-						delay: 0.75,
-						ease,
-					});
-					const circleTl = gsap.timeline();
-					circleTl.from(circleIcon.value, { duration: 0.8, drawSVG: "0 0", delay: 0, ease });
-
-					circleTl.play();
-					checkmarkTl.play();
-				}
-			});
 		}
 
 		function handleIFrameMessage(e) {

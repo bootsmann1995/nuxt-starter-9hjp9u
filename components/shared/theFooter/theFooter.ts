@@ -18,8 +18,6 @@ export default defineNuxtComponent({
 		},
 	},
 	setup() {
-		const footer = useGetFooter();
-
 		useHead({
 			script: [
 				{
@@ -37,7 +35,6 @@ export default defineNuxtComponent({
 		};
 
 		return {
-			footer,
 			showModal,
 			openModal,
 			FooterLinkCollection,

@@ -26,23 +26,23 @@ export default defineNuxtConfig({
 	},
 	css: ["@/assets/styles/site.scss"],
 	app: {
-		// head: {
-		// 	htmlAttrs: {
-		// 		lang: "da",
-		// 	},
-		// 	meta: [{ charset: "utf-8" }, { name: "viewport", content: "width=device-width, initial-scale=1" }],
-		// 	link: [
-		// 		{
-		// 			rel: "stylesheet",
-		// 			href: "https://use.typekit.net/akr6ddr.css",
-		// 		},
-		// 		{
-		// 			rel: "icon",
-		// 			type: "image/x-icon",
-		// 			href: "/favicon.ico",
-		// 		},
-		// 	],
-		// },
+		head: {
+			htmlAttrs: {
+				lang: "da",
+			},
+			meta: [{ charset: "utf-8" }, { name: "viewport", content: "width=device-width, initial-scale=1" }],
+			link: [
+				{
+					rel: "stylesheet",
+					href: "https://use.typekit.net/akr6ddr.css",
+				},
+				{
+					rel: "icon",
+					type: "image/x-icon",
+					href: "/favicon.ico",
+				},
+			],
+		},
 	},
 	algolia: {
 		apiKey: process.env.ALGOLIA_API_KEY,
@@ -70,20 +70,7 @@ export default defineNuxtConfig({
 		},
 		trailingSlash: true,
 	},
-	modules: [
-		"@vueuse/nuxt",
-		"~/modules/sitemap",
-		"@nuxtjs/algolia",
-		"~/modules/robots",
-		[
-			"~/modules/staticWebApp",
-			{
-				headers: {
-					"X-Frame-Options": "DENY",
-				},
-			},
-		],
-	],
+	modules: ["@vueuse/nuxt", "@nuxtjs/algolia"],
 	// plugins: ["~/plugins/vue-instantsearch", "~/plugins/interpolation"],
 	build: {
 		transpile: ["swiper", "@vime/vue", "@vime/core", "contentful-rich-text-vue-renderer"],
@@ -96,20 +83,6 @@ export default defineNuxtConfig({
 			rollupOptions: {
 				external: ["@stencil/core/internal/client"],
 			},
-		},
-	},
-	hooks: {
-		"nitro:config": async (nitroConfig: NitroConfig) => {
-			const cms = new CMSResource(nitroConfig.runtimeConfig);
-			const vehicleApi = new VehicleClient(nitroConfig.runtimeConfig);
-			const pages = await GetAllPages(cms);
-			const vehicleSlugs = await vehicleApi.GetAllVehicleSlugsAsync();
-			nitroConfig.prerender.routes = pages
-				.map((page) => page.path)
-				.concat(
-					vehicleSlugs.map((slug) => `/brugte-biler/${slug.id}/${slug.brand}-${slug.model}/`.toLowerCase())
-				)
-				.concat("/404/");
 		},
 	},
 	nitro: {
