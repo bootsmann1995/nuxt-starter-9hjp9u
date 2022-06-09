@@ -47,8 +47,8 @@ export default defineNuxtConfig({
 		},
 	},
 	algolia: {
-		apiKey: process.env.ALGOLIA_API_KEY,
-		applicationId: process.env.ALGOLIA_APP,
+		apiKey: "YRQASBGOZJ",
+		applicationId: "180916230093ac35978f8623b0a21291",
 	},
 	components: [
 		{ path: "~/components/", extensions: ["vue"], global: true },
