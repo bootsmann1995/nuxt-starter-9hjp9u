@@ -1,7 +1,0 @@
-{
-	"extends": "@lait/stylelint-config",
-	"customSyntax": "postcss-scss",
-	"rules": {
-		"unit-no-unknown": null
-	}
-}

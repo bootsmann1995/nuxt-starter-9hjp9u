@@ -3,6 +3,11 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 export default defineNuxtComponent({
 	setup() {
-		return {};
+		function test() {
+			console.log("test");
+		}
+		return {
+			test,
+		};
 	},
 });

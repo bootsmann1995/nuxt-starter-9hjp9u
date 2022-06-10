@@ -1,0 +1,66 @@
+// transitions
+$transition--cubic: cubic-bezier(0.785, 0.135, 0.15, 0.86);
+$transition: 0.5s $transition--cubic;
+$transition--slow: 0.9s $transition--cubic;
+$transition--fast: 0.4s $transition--cubic;
+$transition--extra-fast: 0.2s $transition--cubic;
+
+.fade-in-animation {
+	opacity: 0;
+	transform: translateY(1.5rem);
+	transition: opacity $transition--slow;
+}
+
+.fade-in-animation.animation-active {
+	opacity: 1;
+	transform: translateY(0);
+}
+
+.fade-transition-enter-active,
+.fade-transition-leave-active {
+	transition: opacity $transition--fast;
+}
+
+.fade-transition-enter-from,
+.fade-transition-leave-to {
+	opacity: 0;
+}
+
+$ease-in: cubic-bezier(0, 0, 1, 0.8);
+$ease-out: cubic-bezier(0, 0, 0.8, 1);
+$transition-duration: 0.4s;
+$transition-delay: 0.2s;
+$animation-delay: 0.1s;
+
+.page-enter-active {
+	transition: $transition-duration;
+	transition-timing-function: $ease-out;
+}
+
+.page-leave-active {
+	transition: $transition-duration;
+	transition-timing-function: $ease-in;
+}
+
+.page-enter {
+	opacity: 0;
+	transform: translateY(2rem);
+	transition-delay: $transition-delay;
+}
+
+.page-leave-to {
+	transform: translateY(2rem);
+	animation: opacity;
+	animation-duration: $transition-duration - $animation-delay;
+	animation-delay: $animation-delay;
+}
+
+@keyframes opacity {
+	from {
+		opacity: 1;
+	}
+
+	to {
+		opacity: 0;
+	}
+}
