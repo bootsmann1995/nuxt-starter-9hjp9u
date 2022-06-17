@@ -38,7 +38,7 @@
 		"@nuxt/kit": "^3.0.0-rc.3",
 		"@nuxt/vite-builder": "^3.0.0-rc.3",
 		"@vueuse/components": "^8.4.2",
-		"algoliasearch": "^4.13.0",
+		"algoliasearch": "^4.13.1",
 		"contentful-rich-text-vue-renderer": "^2.1.0",
 		"graphql": "^16.4.0",
 		"graphql-request": "^4.2.0",

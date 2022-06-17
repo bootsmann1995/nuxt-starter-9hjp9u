@@ -44,6 +44,11 @@ export default defineNuxtConfig({
     },
     trailingSlash: true,
   },
+  algolia: {
+    apiKey: 'YRQASBGOZJ',
+    applicationId: '180916230093ac35978f8623b0a21291',
+  },
+  moduls: ['@nuxtjs/algolia'],
   nitro: {
     prerender: {
       crawlLinks: false,
